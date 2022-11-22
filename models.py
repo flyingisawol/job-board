@@ -5,7 +5,14 @@ class Employer(db.Model):
     __tablename__ = 'employers'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
+    password_hash = db.Column(db.Text, nullable=False)
     jobs = db.relationship('Job', back_populates='employer')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username
+        }
 
     def __repr__(self):
         return f'<Employer: {self.id} - {self.username}>'
@@ -14,7 +21,14 @@ class Applicant(db.Model):
     __tablename__ = 'applicants'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
+    password_hash = db.Column(db.Text, nullable=False)
     applications = db.relationship('JobApplication', back_populates='applicant')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username
+        }
 
     def __repr__(self):
         return f'<Applicant: {self.id} - {self.username}>'

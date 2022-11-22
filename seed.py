@@ -1,6 +1,6 @@
 from datetime import date
-from models import Employer, Applicant, Job, JobApplication
 from app import app, db
+from models import Employer, Applicant, Job, JobApplication
 
 employers = [
     {
@@ -82,14 +82,14 @@ with app.app_context():
     db.create_all()
     
     for i in employers:
-        employer = Employer(username=i['username'])
+        employer = Employer(username=i['username'], password_hash='')
         for j in jobs:
             job = Job(title=j['title'], description=j['description'])
             employer.jobs.append(job)
         db.session.add(employer)
     
     for i in applicants:
-        applicant = Applicant(username=i['username'])
+        applicant = Applicant(username=i['username'], password_hash='')
         db.session.add(applicant)
 
     ak = Applicant.query.get(1)
