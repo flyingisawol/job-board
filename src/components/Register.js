@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+
 
 const Register = ({ setUser }) => {
   const [fields, setFields] = useState('')
@@ -56,15 +57,7 @@ const Register = ({ setUser }) => {
             value={fields.password}
           />
 
-          <label htmlFor="employer">Register as employer</label>
-          <input
-            type="radio"
-            name="account_type"
-            value="employer"
-            id="employer"
-            onChange={handleChange}
-          />
-          <label htmlFor="applicant">Register as applicant</label>
+          <label htmlFor="applicant">I'm an applicant</label>
           <input
             type="radio"
             name="account_type"
@@ -72,9 +65,19 @@ const Register = ({ setUser }) => {
             id="applicant"
             onChange={handleChange}
           />
+          <label htmlFor="employer">I'm an employer</label>
+          <input
+            type="radio"
+            name="account_type"
+            value="employer"
+            id="employer"
+            onChange={handleChange}
+          />
 
           <input type="submit" value="Register" />
         </form>
+        <Link to="/login">Sign in</Link>
+
       </div>
     </>
   )

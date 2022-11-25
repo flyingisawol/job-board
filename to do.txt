@@ -1,0 +1,13 @@
+to do
+
+- user dashboard
+    - search new jobs
+    - see recommended jobs
+    - apply for new jobs
+    - see application status'
+- employer dashboard
+    - post new job
+    - review applications
+
+
+why does current_user not show logged in user?

@@ -8,7 +8,8 @@ If you would like to spin up a copy on your end (and help me figure out how to f
 
 This may also be useful to future me wanting to fix any bugs or outstanding features...
 
-1) run flask on the backend ```pipenv shell```
-2) install dependencies ```npm i```
-3) fire up flask on the back end ```flask --debug run```
-3) in a seperate terminal window start react to launch the front-end ```npm start```
+1) run ```pipenv install```
+2) run flask on the backend ```pipenv shell```
+3) install dependencies ```npm i```
+4) fire up flask on the back end ```flask --debug run```
+5) in a seperate terminal window start react to launch the front-end ```npm start```

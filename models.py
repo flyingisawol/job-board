@@ -11,7 +11,8 @@ class Employer(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username
+            'username': self.username,
+            'account_type': 'employer'
         }
 
     def __repr__(self):
@@ -27,7 +28,8 @@ class Applicant(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username
+            'username': self.username,
+            'account_type': 'applicant'
         }
 
     def __repr__(self):
@@ -41,6 +43,14 @@ class Job(db.Model):
     employer_id = db.Column(db.Integer, db.ForeignKey('employers.id'))
     employer = db.relationship('Employer', back_populates='jobs')
     applications = db.relationship('JobApplication', back_populates='job')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'employer_id': self.employer_id
+        }
 
     def __repr__(self):
         return f'<Job: {self.id} - {self.title}>'
@@ -57,3 +67,10 @@ class JobApplication(db.Model):
 
     stage = db.Column(db.String(50))
     status = db.Column(db.String(50))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'stage': self.stage,
+            'status': self.status
+        }

@@ -31,9 +31,12 @@ const Login = ({ setUser }) => {
       setError(data)
     } else if (res.status === 200) {
       setError(null)
-      // setUser(data) // data.user (once a setUser)
-      console.log(data)
-      navigate("/")
+      setUser(data.user) 
+      if (data.user.account_type === 'applicant') {
+        navigate("/applicant-dashboard")
+        } else if (data.user.account_type === 'employer') {
+          navigate('/employer-dashboard')
+        }
     }
     setFields(initialState)
   }
@@ -58,20 +61,20 @@ const Login = ({ setUser }) => {
             type="Password"
             placeholder="password"
           />
-          <label htmlFor="employer">Login as employer</label>
-          <input
-            type="radio"
-            name="account_type"
-            value="employer"
-            id="employer"
-            onChange={handleChange}
-          />
-          <label htmlFor="applicant">Login as applicant</label>
+          <label htmlFor="applicant">applicant</label>
           <input
             type="radio"
             name="account_type"
             value="applicant"
             id="applicant"
+            onChange={handleChange}
+          />
+          <label htmlFor="employer">employer</label>
+          <input
+            type="radio"
+            name="account_type"
+            value="employer"
+            id="employer"
             onChange={handleChange}
           />
 
