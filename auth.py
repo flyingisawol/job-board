@@ -24,8 +24,12 @@ def register():
 
     password_hash = generate_password_hash(str(password))
 
+    image = request.files['jpg', 'png', 'pdf']
+    uploaded_image = cloudinary.uploader.upload(image)
+    image_url = uploaded_image['url'] 
+
     if account_type == 'applicant':
-        applicant = Applicant(username=username, password_hash=password_hash)
+        applicant = Applicant(username=username, password_hash=password_hash, image=image_url)
         db.session.add(applicant)
         db.session.commit()
 
@@ -38,7 +42,7 @@ def register():
     })
 
     else:
-        employer = Employer(username=username, password_hash=password_hash)
+        employer = Employer(username=username, password_hash=password_hash, image=image_url)
         db.session.add(employer)
         db.session.commit()
 
@@ -83,7 +87,6 @@ def login():
         'message': 'Successfully logged in',
         'user': employer_dict    
         })
-
 
 @auth_router.route('/api/logout/', methods=['POST'])
 def logout():

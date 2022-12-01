@@ -63,6 +63,12 @@ const Register = ({ setUser }) => {
                 value={fields.password}
               />
             </FormGroup>
+            <input
+            name="image_url"
+            type='file'
+            onChange={handleChange}
+            value={fields.image_url}
+            />
             <div className="login-selection">
               <label className="selection" htmlFor="applicant">
                 I'm an Applicant
@@ -86,7 +92,12 @@ const Register = ({ setUser }) => {
               />
             </div>
 
-            <button className="login-btn" type="submit" value="Register">
+            <button
+              className="login-btn"
+              type="submit"
+              value="Register"
+              onclick={handleSubmit}
+            >
               Register
             </button>
             <div className="register-button">

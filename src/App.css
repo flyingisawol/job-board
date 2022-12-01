@@ -18,7 +18,7 @@
   border: 2px solid lightslategrey;
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 0 2px;
+  box-shadow: 1px 1px 8px;
 }
 
 .login-btn {
@@ -47,3 +47,5 @@
 .heading {
   color: #344D67;
 }
+
+/* //////////// APPLICANT DASHBOARD //////////////// */

@@ -7,7 +7,7 @@ class Employer(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.Text, nullable=False)
     jobs = db.relationship('Job', back_populates='employer')
-
+    filename = db.Column(db.String(100))
     def to_dict(self):
         return {
             'id': self.id,
@@ -18,6 +18,15 @@ class Employer(db.Model):
     def __repr__(self):
         return f'<Employer: {self.id} - {self.username}>'
 
+    def __repr__(self):
+        return f"""
+            Image:
+                id: {self.id},
+                public_id: {self.public_id},
+                secure_url: {self.secure_url},
+                filename: {self.filename}
+        """
+        
 class Applicant(db.Model):
     __tablename__ = 'applicants'
     id = db.Column(db.Integer, primary_key=True)

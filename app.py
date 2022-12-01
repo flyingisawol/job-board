@@ -3,6 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 from psycopg2.extras import RealDictCursor
+import cloudinary
+cloudinary.config()
+from cloudinary.uploader import upload, destroy
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')

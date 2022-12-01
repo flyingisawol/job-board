@@ -47,7 +47,7 @@ const Login = ({ setUser }) => {
     <>
     <div className="content-container">
       <div className="login-form">
-        <Form>
+        <form>
           <h2 className="text-center heading">Find Your Dream Job</h2>
           <FormGroup onSubmit={handleSubmit}>
             <Label>Username</Label>
@@ -94,6 +94,7 @@ const Login = ({ setUser }) => {
               className="login-btn"
               type="submit"
               value="login"
+              onClick={handleSubmit}
             >
               Sign In
             </button>
@@ -101,7 +102,7 @@ const Login = ({ setUser }) => {
             <Link to="/register" style={{ textDecoration: 'none'}}>Not Registered?</Link>
             </div>
           </div>
-        </Form>
+        </form>
       </div>
       </div>
     </>
