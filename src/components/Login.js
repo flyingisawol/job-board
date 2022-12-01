@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { Button, Form, FormGroup, Label, Input } from "reactstrap"
+import "../App.css"
 
 const initialState = { username: "", password: "" }
 
@@ -31,58 +33,76 @@ const Login = ({ setUser }) => {
       setError(data)
     } else if (res.status === 200) {
       setError(null)
-      setUser(data.user) 
-      if (data.user.account_type === 'applicant') {
+      setUser(data.user)
+      if (data.user.account_type === "applicant") {
         navigate("/applicant-dashboard")
-        } else if (data.user.account_type === 'employer') {
-          navigate('/employer-dashboard')
-        }
+      } else if (data.user.account_type === "employer") {
+        navigate("/employer-dashboard")
+      }
     }
     setFields(initialState)
   }
 
   return (
     <>
-      <div className="login">
-        <form onSubmit={handleSubmit}>
-          <input
-            onChange={handleChange}
-            value={fields.username}
-            name="username"
-            id="login-username"
-            type="text"
-            placeholder="username"
-          />
-          <input
-            onChange={handleChange}
-            value={fields.password}
-            name="password"
-            id="login-password"
-            type="Password"
-            placeholder="password"
-          />
-          <label htmlFor="applicant">applicant</label>
-          <input
-            type="radio"
-            name="account_type"
-            value="applicant"
-            id="applicant"
-            onChange={handleChange}
-          />
-          <label htmlFor="employer">employer</label>
-          <input
-            type="radio"
-            name="account_type"
-            value="employer"
-            id="employer"
-            onChange={handleChange}
-          />
-
-          <div className="login">
-            <input type="submit" value="Login" />
+    <div className="content-container">
+      <div className="login-form">
+        <Form>
+          <h2 className="text-center heading">Find Your Dream Job</h2>
+          <FormGroup onSubmit={handleSubmit}>
+            <Label>Username</Label>
+            <Input
+              onChange={handleChange}
+              value={fields.username}
+              name="username"
+              id="login-username"
+              type="text"
+              placeholder="username"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Password</Label>
+            <Input
+              onChange={handleChange}
+              value={fields.password}
+              name="password"
+              id="login-password"
+              type="Password"
+              placeholder="password"
+            />
+          </FormGroup>
+          <div className="login-selection">
+            <label className="selection" htmlFor="applicant">Applicant</label>
+            <input
+              type="radio"
+              name="account_type"
+              value="applicant"
+              id="applicant"
+              onChange={handleChange}
+            />
+            <label className="selection" htmlFor="employer">Employer</label>
+            <input
+              type="radio"
+              name="account_type"
+              value="employer"
+              id="employer"
+              onChange={handleChange}
+            />
           </div>
-          <Link to="/register">Register</Link>
-        </form>
+          <div className="full-width">
+            <button 
+              className="login-btn"
+              type="submit"
+              value="login"
+            >
+              Sign In
+            </button>
+            <div className="register-button">
+            <Link to="/register" style={{ textDecoration: 'none'}}>Not Registered?</Link>
+            </div>
+          </div>
+        </Form>
+      </div>
       </div>
     </>
   )
