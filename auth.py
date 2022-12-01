@@ -2,6 +2,8 @@ from sqlalchemy.orm import sessionmaker
 from flask import Blueprint, jsonify, request, session, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
+import cloudinary.uploader
+import logging
 
 from app import db
 from models import Employer, Applicant, Job, JobApplication
@@ -21,15 +23,15 @@ def register():
     username = request.json.get('username')
     password = request.json.get('password')
     account_type = request.json.get('account_type')
-
+    
     password_hash = generate_password_hash(str(password))
 
-    image = request.files['jpg', 'png', 'pdf']
+    image = request.files['file']
     uploaded_image = cloudinary.uploader.upload(image)
     image_url = uploaded_image['url'] 
 
     if account_type == 'applicant':
-        applicant = Applicant(username=username, password_hash=password_hash, image=image_url)
+        applicant = Applicant(username=username, password_hash=password_hash, image_url=image_url)
         db.session.add(applicant)
         db.session.commit()
 
@@ -42,7 +44,7 @@ def register():
     })
 
     else:
-        employer = Employer(username=username, password_hash=password_hash, image=image_url)
+        employer = Employer(username=username, password_hash=password_hash, image_url=image_url)
         db.session.add(employer)
         db.session.commit()
 

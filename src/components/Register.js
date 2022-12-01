@@ -31,7 +31,6 @@ const Register = ({ setUser }) => {
     } else if (res.status === 200) {
       setError(null)
       setUser(data)
-      console.log(data)
       navigate("/")
     }
     setFields()
@@ -65,7 +64,7 @@ const Register = ({ setUser }) => {
             </FormGroup>
             <input
             name="image_url"
-            type='file'
+            type="file"
             onChange={handleChange}
             value={fields.image_url}
             />
@@ -95,8 +94,8 @@ const Register = ({ setUser }) => {
             <button
               className="login-btn"
               type="submit"
-              value="Register"
-              onclick={handleSubmit}
+              value="register"
+              onClick={handleSubmit}
             >
               Register
             </button>
