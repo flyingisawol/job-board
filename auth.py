@@ -20,15 +20,17 @@ def login_required(fn):
 
 @auth_router.route('/api/register/', methods=['POST'])
 def register():
-    username = request.json.get('username')
-    password = request.json.get('password')
-    account_type = request.json.get('account_type')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    account_type = request.form.get('account_type')
+    print(request.files)
     
     password_hash = generate_password_hash(str(password))
 
-    image = request.files['file']
-    uploaded_image = cloudinary.uploader.upload(image)
+    image = request.files['image_url']
+    uploaded_image = cloudinary.uploader.upload(image, folder='jobs')
     image_url = uploaded_image['url'] 
+    print(image_url)
 
     if account_type == 'applicant':
         applicant = Applicant(username=username, password_hash=password_hash, image_url=image_url)

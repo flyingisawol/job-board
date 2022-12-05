@@ -36,8 +36,8 @@ function App() {
         <Route path="/register" element={<Register setUser={setUser}/>}/> 
         <Route path="/login" element={<Login setUser={setUser}/>} />
         
-        {/* { <Route path="/" element={<PrivateRoutes isLoggedIn={!!user} />}> } */}
-          <Route path="/applicant-dashboard" element={<UserDashboard user={user}/>}/>
+        { <Route path="/" element={<PrivateRoutes isLoggedIn={!!user} />}/> }
+          <Route path="/dashboard" element={<UserDashboard user={user}/>}/>
           <Route path="/employer-dashboard" element={<EmployerDashboard user={user}/>}/>
           <Route path="/job/:id" element={<ShowJob />} />
           <Route path="/job/" element={<CreateJob />} />

@@ -7,7 +7,7 @@ class Employer(db.Model):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.Text, nullable=False)
     jobs = db.relationship('Job', back_populates='employer')
-    filename = db.Column(db.String(100))
+    image_url = db.Column(db.String(100))
     def to_dict(self):
         return {
             'id': self.id,
@@ -24,7 +24,7 @@ class Employer(db.Model):
                 id: {self.id},
                 public_id: {self.public_id},
                 secure_url: {self.secure_url},
-                filename: {self.filename}
+                image_url: {self.image_url}
         """
         
 class Applicant(db.Model):
@@ -32,17 +32,27 @@ class Applicant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.String(100))
     applications = db.relationship('JobApplication', back_populates='applicant')
 
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
-            'account_type': 'applicant'
+            'account_type': 'applicant',
         }
 
     def __repr__(self):
         return f'<Applicant: {self.id} - {self.username}>'
+
+    def __repr__(self):
+        return f"""
+            Image:
+                id: {self.id},
+                public_id: {self.public_id},
+                secure_url: {self.secure_url},
+                image_url: {self.image_url}
+        """
 
 class Job(db.Model):
     __tablename__ = 'jobs'

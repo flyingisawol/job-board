@@ -20,17 +20,16 @@ const Register = ({ setUser }) => {
     event.preventDefault()
     const res = await fetch("/api/register/", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(fields),
+      body: new FormData(event.target)
     })
     const data = await res.json()
+    console.log('data.user = ', data.user.account_type)
     if (res.status === 401) {
       setError(data)
     } else if (res.status === 200) {
       setError(null)
       setUser(data)
+      
       navigate("/")
     }
     setFields()
@@ -40,7 +39,9 @@ const Register = ({ setUser }) => {
     <>
       <div className="content-container">
         <div className="login-form">
-          <Form>
+          <Form 
+              onSubmit={handleSubmit}
+              >
             <h2 className="text-center heading">Register</h2>
             <FormGroup onSubmit={handleSubmit}>
               <Label>Username</Label>
@@ -65,6 +66,7 @@ const Register = ({ setUser }) => {
             <input
             name="image_url"
             type="file"
+            id="image_url"
             onChange={handleChange}
             value={fields.image_url}
             />
@@ -95,7 +97,6 @@ const Register = ({ setUser }) => {
               className="login-btn"
               type="submit"
               value="register"
-              onClick={handleSubmit}
             >
               Register
             </button>
