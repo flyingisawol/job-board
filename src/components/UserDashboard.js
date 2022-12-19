@@ -1,6 +1,5 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap'
 
 const Index = () => {
     const [jobs, setJobs] = useState([])
@@ -29,8 +28,15 @@ const Index = () => {
     const renderedEmployers = employers.map((employer) => {
         return (
             <p><Link to={employer.username}>{employer.username}</Link></p>
+            
         )
     })
+    
+    const employerImages = employers.map((employer) => {
+        return (
+            <img src={employer.image_url} alt={employer.image_url}/>
+            )
+        })
 
     const renderedApplications = applications.map((application) => {
         return (
@@ -41,11 +47,12 @@ const Index = () => {
     return (
         <>
         <div className="index">
-            <h1>Welcome back</h1>
-            <h2>Current Applications</h2>
+            <h3>Welcome back</h3> 
+            <h4>Current Applications</h4>
             {renderedApplications}
-            <h2>Employers currently hiring</h2>
+            <h4>Employers currently hiring</h4>
             {renderedEmployers}
+            {employerImages}
 
             <button onClick={() => setVisible(!visible)}>{visible ? 'Availble jobs below' : 'Show all available jobs'}</button>
             {visible && <div>{renderedJobs}</div>}

@@ -35,7 +35,7 @@ const Login = ({ setUser }) => {
       setError(null)
       setUser(data.user)
       if (data.user.account_type === "applicant") {
-        navigate("/applicant-dashboard")
+        navigate("/dashboard")
       } else if (data.user.account_type === "employer") {
         navigate("/employer-dashboard")
       }

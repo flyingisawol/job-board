@@ -29,8 +29,18 @@ const Job = () => {
   return (
     job && (
       <>
-        <h2>{job.title}</h2>
-        <button onClick={onClick}>apply</button>
+      <div className="content-container">
+        <button>back</button>
+        <div className="job-ad">
+        <h4>{job.title}</h4>
+        <h6>{job.description}</h6>
+        <button 
+        onClick={onClick}
+        className="login-btn"
+        >apply
+        </button>
+        </div>
+      </div>
       </>
     )
   )

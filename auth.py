@@ -181,3 +181,8 @@ def application(job_id):
     db.session.add(application)
     db.session.commit()
     return jsonify(application.to_dict())
+
+# EDIT JOBS
+
+
+# DELETE JOBS

@@ -37,9 +37,9 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser}/>} />
         
         { <Route path="/" element={<PrivateRoutes isLoggedIn={!!user} />}/> }
-          <Route path="/dashboard" element={<UserDashboard user={user}/>}/>
-          <Route path="/employer-dashboard" element={<EmployerDashboard user={user}/>}/>
-          <Route path="/job/:id" element={<ShowJob />} />
+          <Route path="/dashboard/" element={<UserDashboard user={user}/>}/>
+          <Route path="/employer-dashboard/" element={<EmployerDashboard user={user}/>}/>
+          <Route path="/job/:id/" element={<ShowJob />} />
           <Route path="/job/" element={<CreateJob />} />
       </Routes>
     </div>

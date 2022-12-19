@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import CreateJob from "./CreateJob"
 import EmpAllJobs from "./EmpAllJobs"
 
-const EmployerDashboard = () => {
+const EmployerDashboard = ({ user }) => {
   return (
     <>
-      <h2>Employer Dashboard</h2>
-
+    <div className="dashboard-container">
       <CreateJob />
       <EmpAllJobs />
+    </div>
     </>
   )
 }

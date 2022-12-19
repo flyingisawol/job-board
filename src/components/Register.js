@@ -29,8 +29,11 @@ const Register = ({ setUser }) => {
     } else if (res.status === 200) {
       setError(null)
       setUser(data)
-      
-      navigate("/")
+      if (data.user.account_type === "applicant") {
+        navigate("/dashboard")
+      } else if (data.user.account_type === "employer") {
+        navigate("/employer-dashboard")
+      }
     }
     setFields()
   }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const EmpAllJobs = () => {
   const [allJobs, setAllJobs] = useState([])
@@ -15,17 +16,21 @@ const EmpAllJobs = () => {
   const renderedJobs = allJobs.map((jobs) => {
     return (
       <>
-        <p>
-          <h3>{jobs.title}:</h3> (Current applications: {jobs.application_count})
-        </p>
-        <p>{jobs.description}</p>
+        <div className="roles">
+          <div className="job-title">
+            <p><Link to={`/job/${jobs.id}`}>{jobs.title}</Link></p>
+          </div>
+          <div className="current-applications">
+            (Current applications: {jobs.application_count})
+          </div>
+        </div>
       </>
     )
   })
 
   return (
-    <div>
-      <h3>Advertised Positions</h3>
+    <div className="open-roles">
+      <h4>Advertised Positions</h4>
       {renderedJobs}
     </div>
   )

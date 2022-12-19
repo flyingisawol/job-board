@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom"
+import { Button, Form, FormGroup, Label, Input } from "reactstrap"
+
 
 const CreateJob = () => {
   const navigate = useNavigate()
@@ -17,12 +19,23 @@ const CreateJob = () => {
 
     return (
         <>
-            <p>Post a new job:</p>
+        <div className="emp-dash">
+            <div className="create-form">
+            <h4>Post New Role</h4>
             <form onSubmit={onSubmit}>
-            <input type="text" name="title" placeholder="emter job title" required />
-            <textarea type="text" name="description" placeholder="emter job description" required />
-            <input type="submit" value='submit' />
+            <Label className="create">Title</Label>
+            <Input className="input" type="text" name="title" placeholder="Enter job title" required />
+            <Label className="create">Description</Label>
+            <Input type="text" name="description" placeholder="Enter job description" required />
+            <button 
+            type="submit" 
+            value='submit'
+            className="login-btn"
+            >Submit
+            </button>
             </form>
+            </div>
+        </div>
         </>
     )
 }

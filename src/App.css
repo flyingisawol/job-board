@@ -7,9 +7,54 @@
 .content-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 60px;
   align-items: center;
-  padding-top: 100px;
+  background: whitesmoke;
+  height: 100vh;
+}
+
+/* ////////////// HEADER  ///////////////// */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  border-bottom: 1px solid lightslategray;
+  padding: 5px;
+}
+
+.header-nav {
+  display: flex;
+  padding: 20px;
+}
+
+.material-symbols-outlined.md-36 { 
+  font-size: 36px; 
+  padding: 10px 10px 0 10px;
+}
+
+.heading {
+  padding: 5px;
+}
+
+.header-home {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.header-profile {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.header-logout {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 /* //////////// LOGIN FORM //////////////// */
@@ -19,6 +64,7 @@
   padding: 25px;
   border-radius: 8px;
   box-shadow: 1px 1px 8px;
+  background-color: whitesmoke;
 }
 
 .login-btn {
@@ -28,6 +74,7 @@
   color: white;
   border: none;
   border-radius: 6px;
+  margin-top: 5px;
 }
 
 .full-width {
@@ -49,3 +96,65 @@
 }
 
 /* //////////// APPLICANT DASHBOARD //////////////// */
+
+
+
+/* //////////// EMPLOYER DASHBOARD //////////////// */
+
+.dashboard-container {
+  display: flex;
+  background: white;
+  padding: 20px;
+  justify-content: center;
+}
+
+.emp-dash {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.create-form {
+  width: 460px;
+  border: 2px solid lightslategrey;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px;
+  background: whitesmoke;
+}
+
+.input {
+  margin-bottom: 5px;
+}
+
+.open-roles {
+  padding: 20px;
+  width: 460px;
+  border: 2px solid lightslategrey;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px;
+  background: whitesmoke;
+}
+
+.job-title {
+  color: #344D67;
+}
+
+.roles {
+  display: flex;
+}
+
+.current-applications {
+  padding-left: 5px;
+}
+
+/* ////////////// SHOW JOB ////////////////// */
+
+.job-ad {
+  width: 480px;
+  border: 2px solid lightslategray;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px;
+}
